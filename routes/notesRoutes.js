@@ -1,26 +1,26 @@
 // uses express.Router.
-const express = require('express');
-const getDB = require('./api/db');
+const router = require('express').Router();
+// const getDB = require('./api/db');
 
 // GET Route for homepage
-app.get('/', (req, res) =>
+router.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
 // GET Route for notes page
-app.get('/notes', (req, res) =>
+router.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
 // GET Route for retrieving all the feedback
-app.get('/api/notes', (req, res) => {
+router.get('/api/notes', (req, res) => {
     console.info(`${req.method} request received for notes data`);
   
     readFromFile('./db/feedback.json').then((data) => res.json(JSON.parse(data)));
   });
   
   // POST Route for submitting note
-  app.post('/api/notes', (req, res) => {
+  router.post('/api/notes', (req, res) => {
     // Log that a POST request was received
     console.info(`${req.method} request received to submit notes`);
   
@@ -48,6 +48,8 @@ app.get('/api/notes', (req, res) => {
     }
   });
   
-  app.listen(PORT, () =>
-    console.log(`App listening at http://localhost:${PORT} 🚀`)
-  );
+  // router.listen(PORT, () =>
+  //   console.log(`App listening at http://localhost:${PORT} `)
+  // );
+
+  module.exports = router;
