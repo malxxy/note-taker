@@ -33,14 +33,8 @@ router.post('/notes', (req, res) => {
 
 // DELETE route for notes
 router.delete('/notes/:id', (req, res) => {
-  note.findbyIdAndDelete(req.params.id)
-  .then((note) => {
-    if (note) {
-      res.status(200).json('Note successfully deleted')
-    } else {
-      res.status(404).send('Error in deleting note. Note was not deleted.')
-    }
-  });
+  notesId = req.params.id;
+  res.send(notesId);
 });
 
 module.exports = router;
