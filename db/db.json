@@ -1,6 +1,10 @@
 [
     {
-        "title":"Insert title here",
+        "title":"Insert test title here",
         "text":"This is test text."
+    },
+    {
+        "title":"Hawaii Trip 2024",
+        "text":"Depart March 10th, 2024 on flight A327..."
     }
 ]
