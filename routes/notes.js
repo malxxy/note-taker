@@ -2,41 +2,34 @@ const router = require('express').Router(); // require express and initiate rout
 const {read, readAndAppend} = require('../helpers/readFunctions');
 
 // GET Route for retrieving all notes that already exist
-router.get('/', (req, res) => {
+router.get('/notes', (req, res) => {
     console.info(`${req.method} request received for notes data`);
-    read('./db/db').then((data) => res.json(JSON.parse(data)));
+    read(path.join(__dirname,'../db/db')).then((data) => res.json(JSON.parse(data)));
   });
   
 // POST Route for submitting note
-router.post('/', (req, res) => {
+router.post('/notes', (req, res) => {
   console.info(`${req.method} request received to submit notes`); // POST request received
 
-  // Destructuring assignment for the items in req.body
+  // Destructure body
   const { title, text } = req.body;
 
-  // If all the required properties are present
-  if (title && text) {
-    // Variable for the object we will save
+  // If body has content
+  if (req.body) {
     const newNote = {
       title,
       text
     };
 
-    readAndAppend(newNote, './db/db.json');
-
-    const response = {
-      status: 'success',
-      body: newNote,
-    };
-
-    res.json(response);
+    readAndAppend(newNote, path.join(__dirname,'../db/db.json'));
+    res.json('Note added');
   } else {
     res.json('Error in posting new note');
   }
 });
 
 // DELETE route for notes
-router.delete('/:id', (req, res) => {
+router.delete('/notes/:id', (req, res) => {
   // delete route
 });
 

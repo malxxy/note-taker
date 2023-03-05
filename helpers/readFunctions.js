@@ -17,12 +17,12 @@ const write = (final, note) => // final = file destination and note = content to
 //  read data and add content to file
 const readAndAppend = (note, file) => {
 fs.readFile(file, 'utf8', (err, data) => {
-    if (err) { //
-    console.error(err);
+    if (err) { 
+        console.error(err);
     } else {
-    const parsed = JSON.parse(data);
-    parsed.push(note);
-    write(file, parsed);
+        const parsed = JSON.parse(data);
+        parsed.push(note);
+        write(file, parsed);
     }
 });
 };
