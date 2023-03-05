@@ -1,5 +1,5 @@
 const router = require('express').Router(); // require express and initiate routes
-const {read, readAndAppend} = require('../helpers/readFunctions');
+const {read, write, readAndAppend} = require('../helpers/readFunctions');
 
 // GET Route for retrieving all notes that already exist
 router.get('/notes', (req, res) => {
@@ -21,7 +21,7 @@ router.post('/notes', (req, res) => {
       text
     };
 
-    readAndAppend(newNote, path.join(__dirname,'../db/db.json'));
+    readAndAppend(newNote, path.join(__dirname,'../db/db'));
     res.json('Note added');
   } else {
     res.json('Error in posting new note');
@@ -30,7 +30,14 @@ router.post('/notes', (req, res) => {
 
 // DELETE route for notes
 router.delete('/notes/:id', (req, res) => {
-  // delete route
+  note.findbyIdAndDelete(req.params.id)
+  .then((note) => {
+    if (note) {
+      res.status(200).json('Note successfully deleted')
+    } else {
+      res.status(404).send('Error in deleting note. Note was not deleted.')
+    }
+  });
 });
 
 module.exports = router;
