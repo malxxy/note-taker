@@ -17,12 +17,17 @@
   <br>
   
   ## Installation
-  To install necessary dependencies, run the following command:
-  npm i
+  Please go to Heroku link. 
+  <br>
+  If running on local machine run the following command:
+  `npm i`
   <br>
   
   ## Usage
- Go to the active Heroku link: {Linked here}(link) 
+ Go to the active Heroku link: [Linked here](link) 
+  <br>
+  If running on your local machine, run the following command:
+  `node server`
   <br>
   
   ## License
