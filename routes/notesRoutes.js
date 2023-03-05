@@ -5,7 +5,7 @@ const {read, readAndAppend} = require('../helpers/readFunctions');
 router.get('/api/notes', (req, res) => {
     console.info(`${req.method} request received for notes data`);
   
-    read('./db/feedback.json').then((data) => res.json(JSON.parse(data)));
+    read('./db/db').then((data) => res.json(JSON.parse(data)));
   });
   
 // POST Route for submitting note
