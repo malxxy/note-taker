@@ -1,11 +1,12 @@
 const router = require('express').Router(); // require express and initiate routes
 const {read, write, readAndAppend} = require('../helpers/readFunctions');
 const uuid = require('../helpers/uuid');
+const path = require('path');
 
 // GET Route for retrieving all notes that already exist
 router.get('/notes', (req, res) => {
     console.info(`${req.method} request received for notes data`);
-    read(path.join(__dirname,'../db/db')).then((data) => res.json(JSON.parse(data)));
+    read(path.join(__dirname,'../db/db.json')).then((data) => res.json(JSON.parse(data)));
   });
   
 // POST Route for submitting note
@@ -23,7 +24,7 @@ router.post('/notes', (req, res) => {
       note_id: uuid(),
     };
 
-    readAndAppend(newNote, path.join(__dirname,'../db/db'));
+    readAndAppend(newNote, path.join(__dirname,'../db/db.json'));
     res.json('Note added');
   } else {
     res.json('Error in posting new note');
