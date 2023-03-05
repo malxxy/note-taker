@@ -2,14 +2,13 @@ const router = require('express').Router(); // require express and initiate rout
 const {read, readAndAppend} = require('../helpers/readFunctions');
 
 // GET Route for retrieving all notes that already exist
-router.get('/api/notes', (req, res) => {
+router.get('/', (req, res) => {
     console.info(`${req.method} request received for notes data`);
-  
     read('./db/db').then((data) => res.json(JSON.parse(data)));
   });
   
 // POST Route for submitting note
-router.post('/api/notes', (req, res) => {
+router.post('/', (req, res) => {
   console.info(`${req.method} request received to submit notes`); // POST request received
 
   // Destructuring assignment for the items in req.body
@@ -34,6 +33,11 @@ router.post('/api/notes', (req, res) => {
   } else {
     res.json('Error in posting new note');
   }
+});
+
+// DELETE route for notes
+router.delete('/:id', (req, res) => {
+  // delete route
 });
 
 module.exports = router;

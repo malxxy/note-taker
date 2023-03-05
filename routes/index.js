@@ -1,8 +1,14 @@
-const express = require('express')
-const notesRoutes = require('./notes');
+const router = require('express').Router();
+const path = require('path');
 
-const app = express();
+// GET Route for homepage
+router.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '../public/index.html'))
+);
 
-app.use(`/notes`,notesRoutes);
+//  GET Route for notes page
+router.get('/notes', (req, res) =>
+  res.sendFile(path.join(__dirname, '../public/notes.html'))
+);
 
-module.exports = app;
+module.exports = router;
