@@ -1,5 +1,6 @@
 const router = require('express').Router(); // require express and initiate routes
 const {read, write, readAndAppend} = require('../helpers/readFunctions');
+const uuid = require('../helpers/uuid');
 
 // GET Route for retrieving all notes that already exist
 router.get('/notes', (req, res) => {
@@ -18,7 +19,8 @@ router.post('/notes', (req, res) => {
   if (req.body) {
     const newNote = {
       title,
-      text
+      text,
+      note_id: uuid(),
     };
 
     readAndAppend(newNote, path.join(__dirname,'../db/db'));
