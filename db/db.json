@@ -11,5 +11,25 @@
         "title": "Canada 2025",
         "text": "January 7th to January 14th",
         "note_id": "5b12"
+    },
+    {
+        "title": "How to use routes in JavaScript",
+        "text": "text",
+        "note_id": "e11f"
+    },
+    {
+        "title": "Test #4",
+        "text": "Testingtestingtesting",
+        "note_id": "6b9f"
+    },
+    {
+        "title": "Troubleshooting GET routes",
+        "text": "My POST route is successful. This note will appear in the database. However, it is not getting the notes and the newly. posted note from the db.",
+        "note_id": "f0b1"
+    },
+    {
+        "title": "Here is a note",
+        "text": "Note note note",
+        "note_id": "6a6a"
     }
 ]
