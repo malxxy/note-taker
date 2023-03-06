@@ -26,5 +26,4 @@ fs.readFile(file, 'utf8', (err, data) => {
     }
 });
 };
-
 module.exports = { read, write, readAndAppend };

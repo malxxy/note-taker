@@ -1,5 +1,5 @@
 const router = require('express').Router(); // require express and initiate routes
-const {read, write, readAndAppend} = require('../helpers/readFunctions');
+const {read, write, readAndAppend } = require('../helpers/readFunctions');
 const uuid = require('../helpers/uuid');
 const path = require('path');
 
@@ -33,8 +33,13 @@ router.post('/notes', (req, res) => {
 
 // DELETE route for notes
 router.delete('/notes/:id', (req, res) => {
-  notesId = req.params.id;
-  res.send(notesId);
+  const notesId = req.params.id;
+  console.log(notesId)
+  const notesData = JSON.parse(read(path.join(__dirname, '../db/db.json')));
+  const filtered = notesData.filter(note => note.note_id !== notesId);
+  console.log(filtered);
+  write(path.join(__dirname, '../db/db.json'), JSON.stringify(filtered));
+  res.json(`note with id ${notesId} is deleted`);
 });
 
 module.exports = router;
