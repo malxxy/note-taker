@@ -32,12 +32,14 @@ router.post('/notes', (req, res) => {
 });
 
 // DELETE route for notes
-router.delete('/notes/:id', (req, res) => {
-  const notesId = req.params.id;
-  console.log(notesId)
-  const notesData = JSON.parse(read(path.join(__dirname, '../db/db.json')));
+router.delete('/notes/:id', async (req, res) => {
+  const notesId = req.params.id; // not being sent // cahnges to body
+  const pathtoDB = path.join(__dirname, '../db/db.json');
+  // console.log(38,pathtoDB,JSON.parse(await read(pathtoDB)));
+  const DB = await read(pathtoDB);
+  const notesData = JSON.parse(DB)
   const filtered = notesData.filter(note => note.note_id !== notesId);
-  console.log(filtered);
+  console.log(42,filtered);
   write(path.join(__dirname, '../db/db.json'), JSON.stringify(filtered));
   res.json(`note with id ${notesId} is deleted`);
 });
