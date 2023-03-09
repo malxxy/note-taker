@@ -6,7 +6,7 @@ const path = require('path');
 // GET Route for retrieving all notes that already exist
 router.get('/notes', (req, res) => {
     console.info(`${req.method} request received for notes data`);
-    read(path.join(__dirname,'../db/db.json')).then((data) => res.json(JSON.parse(data)));
+    read(path.join(__dirname,'../db/db.json'),'utf8').then((data) => {console.log("debuggingRoutes",data); res.json(JSON.parse(data))});
   });
   
 // POST Route for submitting note
@@ -34,11 +34,10 @@ router.post('/notes', (req, res) => {
 // DELETE route for notes
 router.delete('/notes/:id', async (req, res) => {
   const notesId = req.params.id; // not being sent // cahnges to body
+  console.log("noteId in delete",notesId)
   const pathtoDB = path.join(__dirname, '../db/db.json');
-  // console.log(38,pathtoDB,JSON.parse(await read(pathtoDB)));
-  const DB = await read(pathtoDB);
-  const notesData = JSON.parse(DB)
-  const filtered = notesData.filter(note => note.note_id !== notesId);
+  const DB = JSON.parse(await read(pathtoDB));
+  const filtered = DB.filter(note => note.note_id !== notesId);
   console.log(42,filtered);
   write(path.join(__dirname, '../db/db.json'), JSON.stringify(filtered));
   res.json(`note with id ${notesId} is deleted`);
