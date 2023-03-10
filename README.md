@@ -29,6 +29,9 @@
   If running on your local machine, run the following command:
   `node server`
   <br>
+  ![Dashboard Page](/img/dashboard.png)
+    <br>
+  ![Dashboard Page](/img/notes.png)
   
   ## License
   This is a project under the GNU license.
