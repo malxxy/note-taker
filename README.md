@@ -17,14 +17,14 @@
   <br>
   
   ## Installation
-  Please go to Heroku link. 
+  Please go to Heroku link: [Linked here](https://blooming-meadow-84408.herokuapp.com/) 
   <br>
   If running on local machine run the following command:
   `npm i`
   <br>
   
   ## Usage
- Go to the active Heroku link: [Linked here](link) 
+ Go to the active Heroku link: [Linked here](https://blooming-meadow-84408.herokuapp.com/) 
   <br>
   If running on your local machine, run the following command:
   `node server`
